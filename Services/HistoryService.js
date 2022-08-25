@@ -1,8 +1,28 @@
 const { default: mongoose } = require("mongoose");
+const ErrorBody = require("../Utils/ErrorBody");
 const History = require("../Models/History").model;
 
 function createHistory(reqBody) {
-	return History.create(reqBody);
+	return new Promise((resolve, reject) => {
+		History.create(reqBody)
+			.then((response) => {
+				return History.findById(response._id)
+					.populate("fish")
+					.populate("user", ["firstName", "lastName", "email"]);
+			})
+			.then((response) => {
+				resolve(response);
+			})
+			.catch((error) => {
+				console.log(error);
+				reject(
+					new ErrorBody(
+						error.status || 500,
+						error.message || "Internal Server Error"
+					)
+				);
+			});
+	});
 }
 
 function listHistory(userId) {
