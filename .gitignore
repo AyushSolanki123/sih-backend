@@ -1,0 +1,10 @@
+node_modules
+package-lock.json
+
+# environment variables
+env.js
+.env
+
+# logger files
+error.log
+logger.log
