@@ -33,12 +33,7 @@ function createFishes() {
 						name: fish.Name,
 						description: fish.Description,
 						speciesName: fish.Scientific,
-						nutritionalValue: JSON.stringify({
-							calories: fish.Nutrition.cal,
-							carbohydrates: fish.Nutrition.carbo,
-							fat: fish.Nutrition.fat,
-							protein: fish.Nutrition.prot,
-						}),
+						nutritionalValue: JSON.stringify(fish.Nutrition),
 						price: fish.Price,
 						habitat: fish.Habitat,
 						isEdible: fish.Edible == "Edible",
