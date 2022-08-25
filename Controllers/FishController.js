@@ -2,7 +2,6 @@ const FishService = require("../Services/FishService");
 const { validationResult } = require("express-validator");
 const ErrorBody = require("../Utils/ErrorBody");
 const { logger } = require("../Utils/Logger");
-const ReadFishDataset = require("../Utils/ReadFishDataset");
 
 function createFish(req, res, next) {
 	const { errors } = validationResult(req);

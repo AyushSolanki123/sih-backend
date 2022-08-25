@@ -30,13 +30,23 @@ function createFishes() {
 			.then((response) => {
 				response.forEach((fish) => {
 					const data = {
-						name: fish.Species,
-						speciesName: fish.Species,
+						name: fish.Name,
+						description: fish.Description,
+						speciesName: fish.Scientific,
 						nutritionalValue: JSON.stringify({
-							calories: fish.Calories,
-							carbohydrates: fish.Carbohydrates,
-							fat: fish.Fat,
-							protein: fish.Protein,
+							calories: fish.Nutrition.cal,
+							carbohydrates: fish.Nutrition.carbo,
+							fat: fish.Nutrition.fat,
+							protein: fish.Nutrition.prot,
+						}),
+						price: fish.Price,
+						habitat: fish.Habitat,
+						isEdible: fish.Edible == "Edible",
+						regionalNames: JSON.stringify({
+							marathi: fish.Marathi,
+							hindi: fish.Hindi,
+							tamil: fish.Tamil,
+							telegu: fish.Telugu,
 						}),
 					};
 					_promiseArray.push(createFish(data));
