@@ -42,6 +42,19 @@ function getFishById(req, res, next) {
 		});
 }
 
+function getFishByName(req ,res, next) {
+	FishService.getFishByName(req.body.name) 
+		.then((fish) => {
+			res.status(200)
+			res.json({data: fish})
+		})
+		.catch((error) => {
+			logger.error("Error while reading fish");
+			console.log(error);
+			next(new ErrorBody(500, "Internal Server Error"));
+		});
+}
+
 function createFeedback(req, res, next) {
 	const { errors } = validationResult(req);
 	if (errors.length > 0) {
@@ -98,4 +111,5 @@ module.exports = {
 	createFeedback: createFeedback,
 	listFeedback: listFeedback,
 	createFishes: createFishes,
+	getFishByName: getFishByName
 };

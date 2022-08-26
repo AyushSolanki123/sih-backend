@@ -12,6 +12,10 @@ function getFish(fishId) {
 	return Fish.findById(mongoose.Types.ObjectId(fishId));
 }
 
+function getFishByName(name) {
+	return Fish.findOne({name: name})
+}
+
 function createFeedback(reqBody) {
 	return Feedback.create(reqBody);
 }
@@ -71,6 +75,7 @@ module.exports = {
 	createFish: createFish,
 	createFishes: createFishes,
 	getFish: getFish,
+	getFishByName: getFishByName,
 	createFeedback: createFeedback,
 	listFeedback: listFeedback,
 };
