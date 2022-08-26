@@ -28,6 +28,7 @@ router.post(
 	"/feedback/create",
 	[
 		body("user").notEmpty(),
+		body("imageUrl").notEmpty(),
 		body("feedback").notEmpty(),
 		body("fish").notEmpty(),
 	],

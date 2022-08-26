@@ -8,6 +8,10 @@ const FeedbackSchema = new Schema(
 			ref: "User",
 			required: true,
 		},
+		imageUrl: {
+			type: Schema.Types.String,
+			required: true,
+		},
 		fish: {
 			type: Schema.Types.ObjectId,
 			ref: "Fish",
