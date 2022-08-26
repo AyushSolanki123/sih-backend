@@ -24,6 +24,8 @@ router.post("/create/all", fishController.createFishes);
 
 router.get("/:fishId", verifyToken, fishController.getFishById);
 
+router.post("/get", [body("name").notEmpty()], verifyToken, fishController.getFishByName)
+
 router.post(
 	"/feedback/create",
 	[
