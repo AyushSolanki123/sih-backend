@@ -31,7 +31,8 @@ function listHistory(userId) {
 		isDeleted: false,
 	})
 		.populate("user", ["firstName", "lastName", "email"])
-		.populate("fish");
+		.populate("fish")
+		.sort({ createdAt: -1 });
 }
 
 function editHistory(id, reqBody) {
